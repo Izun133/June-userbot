@@ -1,0 +1,65 @@
+{
+  "name": "June-Userbot",
+  "description": "[June-Userbot] userbot Telegram modular yang berjalan pada Python 3.9+",
+  "stack": "container",
+
+  "env": {
+    "API_KEY": {
+      "description": "Dapatkan API KEY di web my.telegram.org Masukan yg APP ID Telegram",
+      "required": true
+    },
+    "API_HASH": {
+      "description": "Dapatkan API Hash di web my.telegram.org",
+      "required": true
+    },
+    "PM_LIMIT": {
+      "description": "Atur batasan pesan pribadi yang dikirim oleh bot, bawaan adalah 5",
+      "value": "5",
+      "required": true
+    },
+    "SECOND_SESSION": {
+      "description": "Pyrogram session string, Isi jika ingin menggunakan bot musik vcg",
+      "required": false
+    },
+    "DATABASE_URL": {
+      "description": "Hanya untuk MONGODB, Dapatkan di https://cloud.mongodb.com",
+      "required": false
+    },
+    "DATABASE_NAME": {
+      "description": "Atur nama databse, Jika menggunakan sqlite ubah menjadi `db.sqlite3`",
+      "value": "junebot",
+      "required": true
+    },
+    "DATABASE_TYPE": {
+      "description": "ubah menjadi sqlite3 jika ingin menggunakan sqlite3 db",
+      "value": "mongodb",
+      "required": true
+    },
+    "STRINGSESSION": {
+      "description": "Pyrogram Session String. Jangan menggunakan Bot. Generate sendiri https://github.com/The-MoonTg-project/Moon-Userbot?tab=readme-ov-file#-optional-vars.",
+      "required": true
+    }
+  },
+  "addons": [
+    {
+    "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-apt"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
+    },
+    {
+      "url": "https://github.com/The-MoonTg-project/heroku-buildpack-yt-dlp"
+    }
+  ]
+}
